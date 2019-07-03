@@ -2,7 +2,6 @@ package ru.skillbranch.devintensive.extensions
 
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 const val SECOND = 1000L
 const val MINUTE = 60 * SECOND

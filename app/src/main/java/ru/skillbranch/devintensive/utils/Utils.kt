@@ -12,4 +12,20 @@ object Utils {
             }
         }
     }
+
+    fun toInitials(firstName: String?, lastName: String?) : String? {
+        val initials: String
+        when {
+            !firstName.isNullOrBlank() -> {
+                val first = firstName.substring(0, 1).toUpperCase()
+                var second = ""
+                if(!lastName.isNullOrBlank()) {
+                    second = lastName.substring(0, 1).toUpperCase()
+                }
+                initials = "$first$second"
+            }
+            else -> return null
+        }
+        return initials
+    }
 }
