@@ -21,15 +21,9 @@ abstract class BaseMessage(
             payload: String,
             isIncoming: Boolean = false
         ): BaseMessage {
-            lastId++
+            lastId += 1
             return when (type) {
-                "image" -> ImageMessage(
-                    lastId.toString(),
-                    from,
-                    chat,
-                    date = date,
-                    image = payload
-                )
+                "image" -> ImageMessage(lastId.toString(), from, chat, date = date, image = payload)
                 else -> TextMessage(lastId.toString(), from, chat, date = date, text = payload)
             }
         }
