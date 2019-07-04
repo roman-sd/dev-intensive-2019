@@ -80,8 +80,8 @@ fun Date.humanizeDiff(date: Date = Date()): String {
         in 22 * HOUR..26 * HOUR -> "через день"
         in -360 * DAY..-26 * HOUR -> "${getDay(diff)} назад"
         in 26 * HOUR..360 * DAY -> "через ${getDay(diff)}"
-        in Long.MIN_VALUE..-360 * DAY -> "больше года назад"
-        in 360 * DAY..Long.MAX_VALUE -> "больше, чем через год"
+        in Long.MIN_VALUE..-360 * DAY -> "более года назад"
+        in 360 * DAY..Long.MAX_VALUE -> "более чем через год"
         else -> throw IllegalArgumentException("$diff")
     }
 }

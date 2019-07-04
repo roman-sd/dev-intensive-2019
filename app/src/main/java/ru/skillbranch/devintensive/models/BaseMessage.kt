@@ -28,10 +28,9 @@ abstract class BaseMessage(
                     from,
                     chat,
                     date = date,
-                    image = payload,
-                    isIncoming = isIncoming
+                    image = payload
                 )
-                else -> TextMessage(lastId.toString(), from, chat, date = date, text = payload, isIncoming = isIncoming)
+                else -> TextMessage(lastId.toString(), from, chat, date = date, text = payload)
             }
         }
     }
