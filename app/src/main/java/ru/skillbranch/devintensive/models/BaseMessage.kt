@@ -17,16 +17,21 @@ abstract class BaseMessage(
             from: User?,
             chat: Chat,
             date: Date = Date(),
-            type: String = "text",
-            payload: Any?,
+            type: String,
+            payload: String,
             isIncoming: Boolean = false
         ): BaseMessage {
             lastId++
             return when (type) {
                 "image" -> ImageMessage(
-                    "$lastId", from, chat, date = date, image = payload as String, isIncoming = isIncoming)
-                else -> TextMessage(
-                    "$lastId", from, chat, date = date, text = payload as String, isIncoming = isIncoming)
+                    lastId.toString(),
+                    from,
+                    chat,
+                    date = date,
+                    image = payload,
+                    isIncoming = isIncoming
+                )
+                else -> TextMessage(lastId.toString(), from, chat, date = date, text = payload, isIncoming = isIncoming)
             }
         }
     }
