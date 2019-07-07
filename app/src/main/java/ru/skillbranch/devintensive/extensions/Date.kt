@@ -87,8 +87,45 @@ fun Date.humanizeDiff(date: Date = Date()): String {
 }
 
 enum class TimeUnits {
-    SECOND,
-    MINUTE,
-    HOUR,
-    DAY
+    SECOND {
+        override fun plural(value: Int): String {
+            return getAbstractPlural(value, "секунда", "секунды", "секунд")
+        }
+    },
+
+    MINUTE {
+        override fun plural(value: Int): String {
+            return getAbstractPlural(value, "минута", "минуты", "минут")
+        }
+    },
+
+    HOUR {
+        override fun plural(value: Int): String {
+            return getAbstractPlural(value, "час", "часа", "часов")
+        }
+    },
+
+    DAY {
+        override fun plural(value: Int): String {
+            return getAbstractPlural(value, "день", "дня", "дней")
+        }
+    };
+
+    abstract fun plural(value: Int): String
+
+    companion object UnitHelper {
+        private fun getAbstractPlural(value: Int, str1: String, str2: String, str3: String): String {
+            return when (value % 10) {
+                1 -> when (value) {
+                    11 -> "$value $str3"
+                    else -> "$value $str1"
+                }
+                2, 3, 4 -> when (value % 100) {
+                    in 12..14 -> "$value $str3"
+                    else -> "$value $str2"
+                }
+                else -> "$value $str3"
+            }
+        }
+    }
 }
