@@ -89,13 +89,13 @@ fun Date.humanizeDiff(date: Date = Date()): String {
 enum class TimeUnits {
     SECOND {
         override fun plural(value: Int): String {
-            return getAbstractPlural(value, "секунда", "секунды", "секунд")
+            return getAbstractPlural(value, "секунду", "секунды", "секунд")
         }
     },
 
     MINUTE {
         override fun plural(value: Int): String {
-            return getAbstractPlural(value, "минута", "минуты", "минут")
+            return getAbstractPlural(value, "минуту", "минуты", "минут")
         }
     },
 
