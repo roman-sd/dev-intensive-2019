@@ -116,7 +116,7 @@ enum class TimeUnits {
     companion object UnitHelper {
         private fun getAbstractPlural(value: Int, singular: String, genitive: String, plural: String): String {
             return when (value % 10) {
-                1 -> when (value) {
+                1 -> when (value % 100) {
                     11 -> "$value $plural"
                     else -> "$value $singular"
                 }
